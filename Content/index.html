@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rapid ES6 Training</title>
+		<meta charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="kamal@konfinity.com">
+		<link rel="stylesheet" href="./agate.css" type="text/css">
+	</head>
+	<body>
+		<header>
+			<h1>Rapid ES6 Training</h1>
+			<nav id="navigation">
+				<ol class="navigation_list">
+					
+					<details>
+						<summary>Introduction</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>An ES6 compatibility chart</li>
+						</ol><!--End of introduction .navigation_sub_list-->
+					</details>
+
+					<details>
+						<summary>New ES6 syntax</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>let, const and block scoping</li>
+							<li>Arrow Functions</li>
+							<li>Default Function Parameters</li>
+							<li>Rest and Spread</li>
+							<li>Object literal expressions</li>
+							<li>for ... of loop</li>
+							<li>Octal and Binary Literals</li>
+							<li>Template Literals</li>
+							<li>Destructuring</li>
+							<li>Advance Destructuring</li>
+							<li>Summary</li>
+						</ol>
+					</details> <!--End of new es6 syntex .navigation_sub_list--> 
+					
+					<details>
+						<summary>ES6 modules and classes</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction and Setup</li>
+							<li>Module Basics</li>
+							<li>Named exports in modules</li>
+							<li>Class Fundamentals</li>
+							<li>Extends and super</li>
+							<li>Properties for class Instances</li>
+							<li>Static members</li>
+							<li>new.target</li>
+							<li>Summary</li>
+						</ol>
+					</details>
+
+					<details>
+						<summary>New types and object extensions</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>Symbols</li>
+							<li>Well-known symbols</li>
+							<li>Object Extensions</li>
+							<li>String Extensions</li>
+							<li> Number Extensions</li>
+							<li>Math Extensions</li>
+							<li>Regex Extensions</li>
+							<li>Function Extensions</li>
+							<li>Summary</li>
+						</ol>
+					</details>
+
+					<details>
+						<summary>Iterators, Generators and Promises</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>Iterators</li>
+							<li>Generators</li>
+							<li>Yielding in Generators</li>
+							<li>throw and return</li>
+							<li>Promises</li>
+							<li>More Promises Features</li>
+							<li>Summary</li>
+						</ol>
+					</details>
+
+					<details>
+						<summary>Arrays and collections</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>Array Extensions</li>
+							<li>Array buffers and typed arrays</li>
+							<li>Dataview and Endianness</li>
+							<li>Map and weak map</li>
+							<li>Set and weak set</li>
+							<li>Subclassing</li>
+							<li>Summary</li>
+						</ol>
+					</details>
+
+					<details>
+						<summary>The Reflect Api</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>Construction and method calls</li>
+							<li>Reflect and Prototypes</li>
+							<li>Reflect and Property extensions</li>
+							<li>Summary</li>
+						</ol>
+					</details>
+
+					<details>
+						<summary>The Proxy APi</summary>
+						<ol class="navigation_sub_list">
+							<li>Introduction</li>
+							<li>Proxies Defined</li>
+							<li>Available Traps</li>
+							<li>Get by Proxy</li>
+							<li>Calling Functions By Proxy</li>
+							<li>A proxy as a prototype</li>
+							<li>Revocable Proxies</li>
+							<li>Summary</li>
+						</ol>
+					</details>	
+
+				</ol><!--End .navigation_list-->	
+						</ol>	
+				</ol>
+			</nav>
+		</header>
+
+		<section id="content">
+			<header>
+				<h1>New ES6 Syntex</h1>
+			</header>
+			<section id="module_1" class="module">
+				<div class="submodule">
+					<header>
+						<h2>Let, Const and Block Scoping</h2>
+					</header>
+					<p><strong>Let</strong> is used to declare new variable that does away with hoisting</p>
+					<p><strong>Const</strong> are variables that are unable to change</p>
+					<p><strong>Block Scoping</strong>, we can declare variable inside curly braces and it becomes its scope, now no need to rely only on function scope</p>
+					<p> Lets check some examples</p>
+					<div class="code_examples">
+						<p>Here we are going to log product id but logging it after it was declared</p>
+						<div class="problem_container">
+							<p class="problem_title">What shows in the console?</p>
+							<pre><code class="javascript">
+//demo#1
+'use strict';
+console.log(productId);
+var productId = 12;
+								</code></pre>
+						</div>
+						<div class="explanation">
+							<p> The productId variable gets hoisted to the global scope so the result is undefined</p>
+						</div>
+
+					</div><!--End .class="code_examples"-->
+					<div class="code_examples">
+						<p> Here in this example we are using let instead of var that prevents hoisting</p>
+						<div class="problem_container">
+							<p class="problem_title">What shows in the console?</p>
+							<pre><code class="javascript">
+//demo#2
+'use strict':
+console.log(productId);
+var productId =12;
+								</code></pre>
+						</div>
+					</div><!-- End .class="code_examples"-->
+					<div class="code_examples">
+						<p>Now we are declaring variable before it was used</p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#3
+'use strict';
+let productId =12;
+console.log(productId);
+							</code></pre>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p> In this case we are declaring productId but not assigning it value</p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#4
+'use strict';
+let productId;
+console.log(productId);
+							</code></pre>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p>Now we are declaring productId to 12 in global scope and then taking productId in a block and assigning it different value. What should be result in the console</p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#5
+'use strict';
+let productId =12;
+{
+   let productId = 2000;
+}
+console.log(productId);
+							</code></pre>
+						</div>
+						<div class="explanation">
+							<p>
+							The result will be <strong>12</strong> as now JS also has a block scope just like Java. The opening and closing curly braces acts as a block which has its own scope. The variable declared in a block will terminate to exist outside of the block
+							</p>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					
+					<div class="code_examples">
+						<p> In this example there is a block inside which varible is declared</p>
+						<div class="problem_container">										 <pre><code>
+//demo#6
+'use strict';
+{
+   let productId =12;
+}
+console.log(productId);
+							</code></pre>
+							<div class="explanation">
+								<p> The result and analysis is quite explanatory</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p>In this example we are declaring a function inside which product id is initialized with value 12, outside of function product id is declared and initialized with null then we are logging out the product Id. Analyse the result </p>
+						<div class="problem_container">
+							<pre><code>
+//demo#7
+'use strict';
+function updateProductId(){
+	productId = 12;
+}
+let productId = null;
+updateProductId();
+console.log(productId);
+							</code></pre>
+							<div class="explanation">
+								<p>
+								The result will be <strong>12</strong> as the function is called after productId is declared. Then it will update its value and in next line it gets printed.
+								</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p>
+						In this example we will use the block scoping capability of ES6 to a for loop. And Check this example with var and let both type of keywords to get better understanding.
+						</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#8
+'use strict';
+let productId = 42;
+for(let productId =0; productId<=10; productId++){
+	   }
+console.log(productId);
+//check with var and let to see the difference	   
+
+							</code></pre>
+							<div class="explanation"><p>
+								Here the for loop creates a block scope for productId so it goes from 0 to 11 inside of loop. Outside of that block scope it has value of 42 that is in global scope
+								</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p>
+  In this example there is an array that takes functions from inside of a loop statement, that gets return value equal to the loop counter value. Then the function at 0 position of loop gets executed
+						</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#9
+'use strict';
+let updateFunctions = [];
+for(var i=0; i<2; i++){
+	   updateFunctions.push(function(){return i;});
+	   }
+console.log(updateFunctions[0]());
+							</code></pre>
+							<pre><code>
+//demo#10
+'use strict';
+let updateFunctions = [];
+for(let i=0; i<2; i++){
+	   updateFunctions.push(function(){return i;});
+	   }
+console.log(updateFunctions[0]());
+
+							</code></pre>
+							<div class="explanation">
+								<p>
+								In the example no 9 the output will be 2 as closure will be formed in the loop and return statement. In the example no 10 the output will be 0 as the closure will be initialized with only the blocked value of i. the let keyword example is little computationally expensive but reduces problem of closure.
+								</p>
+							</div>
+						</div>
+					</div><!--End .class="code_examples" -->
+
+					<div class="code_examples">
+						<p>Now declaring a varible with <strong>const</strong> keyword</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#11
+'use strict'
+const MARKUP_PCT =100;
+console.log(MARKUP_PCT);
+							</code></pre>
+							<div class="explanation">
+								<p> Here the variable is declared in capitol letters, this is just a convension of many major languages. Const variable doesn't change in its lifetime</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p>In this demo, we are declaring const but we are not initializing it</p>
+						<div class="problem_container">
+							<pre><code>
+'use strict';
+const MARKUP_PCT;
+console.log(MARKUP_PCT);
+							</code></pre>
+							<div class="explanation">
+								<p>The const always need to be initialized so the output will be <strong>syntex error</strong></p>
+							</div>
+						</div>
+					</div><!--End .class="code_examples"-->
+					<div class="code_examples">
+						<p>In this demo we are trying to change const</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#13
+'use strict';
+const MARKUP_PCT =100;
+MARKUP_PCT =10;
+console.log(MARKUP_PCT)
+							</code></pre>
+							<div class="explanation">
+								<p>The output will be <strong>Type Error </strong> as const cannot be changed in its lifetime</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+
+					<div class="code_examples">
+						<p>In this demo we are checking whether the const is greater than 10 if true change it to something else</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#14
+'use strict';
+const MARKUP_PCT =100;
+if(MARKUP_PCT >10){
+   const MARKUP_PCT =10;
+}
+console.log(MARKUP_PCT);
+							</code></pre>
+							<div class="explanation">
+								<p>Here the output will be <strong>100</strong> as if creates a block scope and creating a const creates a completely different variable just for that scope that do not have any effect outside.</p>
+							</div>
+						</div>
+					</div><!--End .class="code_examples"-->
+				</div><!-- End .submodule-->
+				<div class="submodule">
+					<header>
+						<h2>Arrow Functions</h2>
+					</header>
+					<p>Arrow function is another important keyword for ES6. It acts like the function keyword of earlier Javascript.</p>
+					<p> It looks like fat arrow <strong>=&gt;</strong>. Lets take a look at some of its uses</p>
+					<div class="code_examples">
+						<p>In this example we are not supplying any parameters to the function and value returns a value that is 8 in this case. The empty parenthisis represents no parameters and fat arrow represents maps to. </p>
+						<div class="problem_container">
+							<pre><code>
+//demo#15
+'use strict';
+let getPrice = () => 8;
+console.log(typeof getPrice);
+console.log(getPrice());
+							</code></pre>
+							<div class="explanation">
+								<p> The result of the function should be <strong>function</strong> and <strong>8</strong> as we are only executing a function</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples"-->
+					<div class="code_examples">
+						<p>In this example we have a single parameter named count. If we have only one argument than we can even leave parenthisis.</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#16
+'use strict';
+let getPrice = count => count * 4; 
+console.log(getPrice(8);
+							</code></pre>
+							<div class="explanation">
+								<p>The result of the function is <strong>32</strong> as it executes like a normal function</p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p>This example demostrates two prarameter function</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#17
+'use strict';
+let getPrice = (count, tax) => (count* 2) +(1+tax);
+console.log(getPrice(4,0.6);
+							</code></pre>
+							<div class="explanation">
+								<p> The output of this function will be <strong>9.6</strong></p>
+							</div>
+						</div>
+					</div><!-- End .class="code_examples" -->
+					<div class="code_examples">
+						<p> This example demonstrates multi line expression inside arrow functions</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#18
+'use strict';
+let getPrice = (count, tax) => {
+	var price = count*4;
+	price *= 1+tax;
+	return price;
+};
+console.log(getPrice(4, 0.16));
+							</code></pre>
+							<div class="explanation">
+								<p>The output will be <strong>18.56</strong>
+							</div>
+						
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>Consider the code of previous JS version and observe the value of keyword this. Consider notes of JS</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#19
+'use strict';
+document.addEventListener('click',function(){
+console.log(this);
+});
+							</code></pre>
+							<div class="explanation">
+								<p>The output will be document object as this will try to get the element on which event listener is applied. The problem in this function in ES5 was that it returns the element not the context of the function which should be the desired result</p>
+							</div>
+						</div><!--End of problem_container-->
+					</div><!-- End of class="code_examples" -->
+
+					<div class="code_examples">
+						<p>Now lets convert demo 19 example to new arrow function and check the result</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#20
+'use strict'
+document.addEventListener('click' () => console.log(this));
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be window that is context from where function called</p>
+							</div>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples" -->
+
+					<div class="code_examples">
+						<p> Now lets take another example from ES5 world</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#21
+'use strict';
+var cat = {
+	age: 4,
+	makeSound: function(){
+		console.log(this);
+	}
+}
+cat.makeSound();
+							</code></pre>
+							<div class="explanation">
+								<p> This will result an object with value age:4, the same object. But the desired output must be window as we are calling function from window context </p>
+							</div>
+						</div><!-- end of problem_container-->
+
+					</div><!-- End of class="code_examples" -->
+
+					<div class="code_examples">
+						<p> Consider the same example with arrow function</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#22
+'use strict';
+let cat = {
+	age:4,
+	makeSound: () => console.log(this)
+}
+cat.makeSound();
+							</code></pre>
+							<div class="explanation">
+								<p> This will result in window object as expected</p>
+							</div>
+						</div><!-- End of problem container -->
+					</div><!-- End of class="code_examples"-->
+
+					<div class="code_examples">
+						<p>In this example we will try to investigate scope with hybrid model ES6 arrow function inside ES5 function keyword</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#23
+'use strict';
+let cat = {
+	age:4,
+	sound:'meww',
+	makeSound:function(){
+		return () => console.log(this.sound);
+	}
+};
+console.log(cat.makeSound()());
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be <strong>Meww</strong> as the context of arrow function is function. </p>
+							</div>
+						</div><!-- End of Problem_container-->
+
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p> In this example we are using bind, call or apply. In ES5 scenerio they are used quite often to forcefully change context of function call. Lets see what happens in case of arrow function</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#24
+let cat = {
+	age:4,
+	sound:'meww',
+	getAge:function(){
+		return () => console.log(this.age);
+	}
+};
+var newCat = {
+	age:2,
+	sound:'meww',
+};
+cat.getAge().bind(newCat);
+cat.getAge().call(newCat);
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be the age of cat not newCat even if we have applied force context overriding methods. The bind, call and apply methods are useless in case of arrow functions of ES6. </p>
+							</div>
+						</div><!-- End of problem_container-->
+
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p> Just another quirky example of arrow function</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#25
+'use strict';
+let getPrice = () => 5.99;
+console.log(getPrice.hasOwnProperty('prototype'));
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be <strong>false</strong> as if you declare function with fat arrow then you have no access to prototype function</p>
+								<p>Another important thing to note that the fat arrow function should be in <strong>same line </strong> otherwise a syntex error will occur</p>
+							</div>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+
+				</div><!-- Emd of .submodule-->
+				<div class="submodule">
+					<header>
+						<h2>Default Function Parameters</h2>
+					</header>
+					<p>These parameters provide us the ability to set default parameters to the functions. Lets see some examples</p>
+					<div class="code_examples">
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#26
+'use strict';
+var getProduct = function(productId =1000){
+	console.log(productId);
+}
+getProduct();
+							</code></pre>
+							<div class="explanation">
+								<p>
+								This will give an output of <strong>1000</strong> </p>
+							</div>
+						</div><!-- End of problem container-->
+					</div><!--End of class="code_examples"-->
+					<div class="code_examples">
+						<p>In this example we will see 2 parameters passed with one has value of undefined and two default parameters</p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#27
+'use strict';
+let getProduct = function(productId=1000, type='hardware'){
+	console.log(productId +' ' + type);
+}
+getProduct(undefined, 'software');
+							</code></pre>
+							<div class="explanation">
+								<p>The output is <strong>1000 software</strong>. The undefined parameter will result in default parameters and other being printed exactly same</p>
+							</div>
+						</div><!-- End of problem container-->	
+					</div><!--End of class="code_examples"-->
+					
+					<div class="code_examples">
+						<p>In this example Example second parameter is dynamically created parameter from first parameter. It has its own dynamic scope </p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#28
+'use strict';
+const TAX = 0.7;
+let getPrice = (price = 1000, tax = price * TAX) => {
+	return price += tax;
+}
+console.log(getPrice());
+							</code></pre>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>This example is similar to previous example with a differnce that this time second parameter is calculated by using a return function not a const</p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#29
+'use strict';
+let getTax = (price) => 0.6 * price;
+let getPrice = (price =1000, tax = getTax(price)) =>{
+ return price +=tax;
+}
+console.log(getPrice());
+							</code></pre>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>In this example we will check what arguments will return</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#30
+'use strict';
+let getPrice = function(param1, param2 =200, param3=100){
+	console.log(arguments.length);
+}
+getPrice(10);
+							</code></pre>
+							<div class="explanation">
+								<p>here the result will be <strong>1</strong> even though we have 3 parameters. The default parameters cannot be accessed through arguments</p>
+							</div>
+
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>Here in this example the first parameter is defaulted to second parameter.</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#31
+'use strict';
+let getPrice = function(price = nextPrice, nextPrice =1000){
+console.log(price);
+}
+getPrice();
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be <strong>Reference error</strong> as it has its own scope so consider it inside of a block scope and analyse it with let statement. Now test another example by passing value to the first parameter. The result will be value passed not reference error as the default value will never be considered if you pass a value to defualt parameter</p>
+							</div>
+
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples" -->
+					<div class="code_examples">
+						<p> In this exmple we will declare function dynamially with default parameters</p>
+						<pre><code>
+//demo#32
+'use strict';
+let newFunction = new Function('price=2000', 'return price');
+console.log(newFunction());
+						</code></pre>
+						<div class="explanation">
+							<p> To create a new function dynamically the first parameter to new Function argument is parameter which we have defaulted to 2000, and second is expression that the new function will execute, here in our example we are only returning a price parameter</p>
+						</div>
+
+					</div><!-- End of class="code_examples" -->
+
+
+
+				</div><!-- End of .submodule-->
+				<div class="submodule">
+					<header>
+						<h2>Rest and Spread</h2>
+					</header> 
+					<p><strong>Rest</strong> is gathering parameters and putting them in a single array</p>
+					<p><strong>Spread</strong> is just opposite of Rest ie. spreading out elements of array or string</p>
+					<p>Lets take a look at some of the examples</p>
+					<div class="code_examples">
+						<p>In this example we will pass two parameters on is simple parameter and other is rest parameter with 3 values</p>
+						<div class="problem_container">
+							<pre><code class="javascript">
+//demo#33
+'use strict';
+let getCategories = function(productId, ...categories){
+	console.log(categories.instanceof Array);
+	console.log(categories);
+}
+getCategories(2002, 'electronics', 'home appliances', 'fridge');
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be <strong>true</strong> as rest generates a array from passed parameters, <strong>all array items</strong></p>
+							</div>
+						</div><!--End of problem container-->
+					</div><!-- End of class="code_examples"-->
+
+					<div class="code_examples">
+						<p>In this example we will pass only one argument but in the previous example</p> 
+						<div class="problem_container">
+							<pre><code>
+//demo#33
+... previous code of function
+getCategories(2002);
+							</code></pre>
+						</div><!-- End of problem container-->
+						<div class="explanation">
+							<p>The result will be true and a <strong>blank array</strong>. The rest operator creates a blank array even if no parameters is passed</p>
+						</div>
+					</div><!--End of class="code_examples"-->
+					<div class="code_examples">
+						<p>In this example we will try to find out the function length as function behaves just like a object</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#33
+...previous code of funtion previous example
+console.log(getCategories.length);
+... inside function 
+console.log(arguments.length);
+//after passing 3 arguments
+							</code></pre>
+							<div class="explanation">
+								<p>arguments.length will show 4 if 3 arguments in categories otherwise 1 if no argument is passed. function.length will always give 1 as result</p>
+							</div>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+
+					<div class="code_examples">
+						<p>Creating a dynamic function with rest parameter</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#34
+'use strict';
+let newFunction = new Function('...categories','return categories');
+console.log(newFunction('electronics','home appliances');
+							</code></pre>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>Spread is opposite of Rest. In this example we will have an array having prices and we will use spread operator to find its max value</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#35
+'use strict';
+let prices = [12,20,18];
+let maxPrices = Math.max(...prices);
+console.log(maxPrices);
+							</code></pre>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>In this Example we will create an array with new Array and with no values just commas</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#36
+'use strict';
+let newPriceArray = Array(...[,,,]);
+console.log(newPriceArray);
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be three undefined values</p>
+							</div>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p> Some more examples</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#37
+'use strict';
+let maxCode = Math.max(..."43210");
+let codeArray = ['A', ...'BCD', 'E'];
+console.log(maxCode);
+console.log(codeArray);
+							</code></pre>
+						</div><!-- End of problem container -->
+					</div><!-- End of code examples-->
+				</div><!--End of submodule-->
+				<div class="submodule">
+					<header>
+						<h3>Object Literal Extensions</h3>
+					</header>
+					<p>Object literals are little bit extended for some ease in typing</p>
+					<p>Lets take some example</p>
+					<div class="code_examples">
+						<p>Basic Difference between ES5 and ES6 object literal</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#38
+'use strict';
+let price = 5.44, quantity = 30;
+let productView = {
+	price,
+	quantity
+};
+console.log(productView);
+							</code></pre>
+							<div class="explanation">
+								<p>Here the result will be value of price and qunatity. ES6 automatically try to take value from the variable declration inside object literal so saves typing. </p>
+							</div>
+						</div><!-- End of problem_container-->
+
+					</div><!-- End of class="code_examples" -->
+					<div class="code_examples">
+						<p> In this example we will examine what happens wiht a function inside object literal</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#39
+'use strict';
+let price = 5.99, qnt=30;
+var productView = {
+	price,
+	quantity,
+	calculateValue(){
+		return this.price* this.qunatity;
+	}
+}
+console.log(productView.calculateValue());
+							</code></pre>
+							<div class="explanation">
+								<p>Here the output of multiplication of price and quantity. Where is 'this' refers to and also look at the syntex of function inside object literal </p>
+							</div>
+							</div>
+};
+
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>In this example we will look into where 'this' refers to by defining values of keys inside the object literal</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#40
+'use strict';
+let price = 40, quantity = 4;
+let productView = {
+	price: 50,
+	quantity= 4,
+	calculatePrice(){
+		return this.price*this.quantity;
+	}
+}
+console.log(productView.calculatePrice());
+							</code></pre>
+							<div class="explanation">
+								<p>Here the result should be <strong>200</strong> which implies the scope of this is from inside object literal</p>
+							</div>
+						</div><!-- End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>Lets take another example where we will use dynamic fields inside object literal</p>
+						<p> These are specially useful in case where key and value if coming from server and frontend has no control over them</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#41
+'use strict';
+let price = 40, qnty= 2;
+let productValue = {
+	price, 
+	qnty,
+	'calculate price'(){
+		return  this.price * this.qnty;
+	}
+}
+console.log(productValue[''calculate price']());
+
+let field = 'dynamic field';
+let method = 'calculate';
+let newProductView  {
+	[field+ '-001']: price,
+	[field]: price,
+	[method +'-001'](){
+		console.log('in a method');
+	}	 
+}; 
+console.log(newProductView);
+newProductView['calculate-001']();
+							</code></pre>
+							<div class="explanation">
+								<p></p>
+							</div>
+							
+						</div><!-- End of problem_container-->
+					</div><!--End of code example-->
+
+				</div><!-- End of submodule-->
+				<div class="submodule">
+					<header>
+						<h2>For .. of Loops</h2>
+					</header>
+					<p>A new syntex of for loop used to iterate iterables</p>
+					<div class="code_examples">
+						<div class="problem_container">
+    							<pre><code>
+//demo#41
+'use strict';
+var categories = [ 'home appliances', 'electronics', 'automated'];
+for(var item of categories){
+	console.log(item);
+}
+var codes = 'ABCDEF';
+var count =0;
+for (var code of codes){
+	count++;
+}
+console.log(count);
+							</code></pre>
+							<div class="explanation">
+								<p>The code is self explanatory. Just a new syntex for 'for' loop</p>
+							</div>
+
+						</div><!--End of problem_container-->
+					</div><!-- End of class="code_examples" -->
+
+				</div><!--End of submodule-->
+				<div class="submodule">
+					<header>
+						<h3>Octal and Binary Literals</h3>
+					</header>
+					<p><strong>Octals</strong> were confusing in ES5, using strict mode it doesn't work and by prepending a number by 0 creates any number octal.</p>
+					<div class="code_examples">
+						<p>This examplewill show how prepending 0 converts a number to octal or binary</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#42
+'use strict';
+let value = 0o10;
+console.log(value);
+let valueBinary = 0b10;
+console.log(valueBinary);
+							</code></pre>
+							<div class="explanation">
+								<p>The 0 appending will convert normal number to octal or binary according to 'o' or 'b' character in front of value</p>
+							</div>	
+						</div><!--End of problem_container-->
+					</div><!--End of class="code_examples"-->	
+				</div><!--submodule-->	
+
+				<div class="submodule">
+					<header>
+						<h3>Template Literals</h3>
+					</header>
+					<p>By <strong>Template</strong> we mean string template with interpolated variables and expressions</p>
+					<p>Lets look at some of the examples</p>
+					<div class="code_examples">
+						<p>Basic template literal example</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#43
+'use strict';
+let invoiceNumber = '350';
+console.log(`Invoice Number : ${invoiceNumber}`);
+//demo part2
+console.log(`Invoice Number 2 : \${invoiceNumber}`);
+console.log(`Invoice Number 3 : ${'INV- '+ invoiceNumber}`);
+//demo part 3 
+let message = `A
+B
+C`;
+console.log(message);
+							</code></pre>
+							<div class="explanation">
+								<p>In part 1 of demo the string single quote is replaced by back tick (`) and the template to be inserted must be wrapped around curly braces. In second part the $ sign is escaped which results in no interpolation of variable. In Part 3 the Interpolated variable is prepended by a String. In part 4 the variable decalaration is with back tick and results in preservation of spaces in printing</p>
+							</div>
+						</div><!--End of problem_container-->
+					</div><!--End of class="code_examples"-->
+					<div class="code_examples">
+						<p> In this example we will pass interpolated statement as a argument to function</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#44
+'use strict';
+function showMessage(message){
+	let invoiceNumber = '99';
+	console.log(message);
+}
+let invoiceNumber = '350';
+showMessage(`Invoice Number: ${invoiceNumber});
+							</code></pre>
+							<div class="explanation">
+								<p>The result will be <strong>350</strong> as interpolation will take place before passed as argument</p>
+							</div>
+						</div><!--End of problem_container-->
+					</div><!-- End of class="code_examples"-->
+					<div class="code_examples">
+						<p>In this example we will pass inpolated varible to the function and print its value</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#45
+'use strict';
+function processInvoice(segment){
+	console.log(segment);
+}
+processInvoice `template`;
+							</code></pre>
+							<div class="explanation">
+								<p>The output is a array with single element 'template'. look at line number 6 the template is passed as argument without parenthisis and it gets transformed to an array containing single element</p>
+							</div>
+						</div><!-- End of problem_container-->
+					</div><!-- End of code example-->
+					<div class="code_examples">
+						<p> Let's take a look at little more complex example of template literals</p>
+						<div class="problem_container">
+							<pre><code>
+//demo#46
+'use strict';
+function processInvoice(segments, ...values){
+	console.log(segments);
+	console.log(values);
+}
+let invoiceNumber = '1350';
+let amount = '2000';
+processInvoice `Invoice : ${invoiceNumber} for ${amount}`;
+							</code></pre>
+							<div class="explanation">
+								<p>The segments will print the string literals and the values will print the template literals</p>
+							</div>
+						</div><!--End of problem_container-->
+					</div><!-- End of code example-->
+				</div><!-- End of submodule-->
+
+
+			</section>
+		</section>
+		<script src="./highlight.pack.js" type="application/javascript"></script>
+		<script type="application/javascript">hljs.initHighlightingOnLoad();</script>	
+	</body>
+</html>

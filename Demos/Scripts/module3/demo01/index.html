@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo 1 - Rapid ES6</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Module Demo</h1>
+		<!-- Module to load ES6 modules dynamically as not supported by many browsers -->
+		<script src="traceur.js" type="application/javascript"></script>
+		<script src="es6-module-loader-dev.js" type="application/javascript"></script>
+
+		<script type='application/javascript'>
+			//Importing base module using above package could be done just by System.import if browser supports
+
+			System.import('./base.js');
+	       	</script>
+	</body>
+</html>
